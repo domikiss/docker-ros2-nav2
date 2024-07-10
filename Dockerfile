@@ -38,6 +38,7 @@ SHELL ["/bin/bash", "-c"]
 # Create a Colcon workspace, clone the nav2-demo repo and build it
 RUN mkdir -p /ros2_ws/src
 WORKDIR /ros2_ws
+ADD "https://api.github.com/repos/domikiss/nav2-demo/commits?per_page=1" latest_commit
 RUN git clone https://github.com/domikiss/nav2-demo.git src/nav2-demo
 RUN rosdep install --from-paths src --ignore-src --rosdistro ${ROS_DISTRO} -y \
  && colcon build --symlink-install
