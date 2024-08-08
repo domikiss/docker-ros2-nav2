@@ -43,7 +43,11 @@ RUN git clone https://github.com/domikiss/nav2-demo.git src/nav2-demo
 RUN rosdep install --from-paths src --ignore-src --rosdistro ${ROS_DISTRO} -y \
  && colcon build --symlink-install
 
- # Set up the entrypoint
+# Set up launcher shell script
+COPY ./tb3_nav_launch.sh /tb3_nav_launch.sh
+RUN chmod 775 /tb3_nav_launch.sh
+
+# Set up the entrypoint
 COPY ./nav2-demo-entrypoint.sh /entrypoint.sh
 RUN chmod 775 /entrypoint.sh
 ENTRYPOINT [ "/entrypoint.sh" ]
