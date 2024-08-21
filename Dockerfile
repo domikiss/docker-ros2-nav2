@@ -11,6 +11,8 @@ RUN source /opt/ros/${ROS_DISTRO}/setup.bash \
   && apt-get update -y \
   && apt-get install ros-${ROS_DISTRO}-navigation2 -y \
   && apt-get install ros-${ROS_DISTRO}-nav2-bringup -y \
+  && apt-get autoremove -y \
+  && apt-get clean -y \
   && rm -rf /var/lib/apt/lists/*
 
 #####################################
@@ -27,6 +29,8 @@ RUN apt-get install -y --no-install-recommends \
   git \
   cmake \
   ros-dev-tools \
+  && apt-get autoremove -y \
+  && apt-get clean -y \
   && rm -rf /var/lib/apt/lists/*
 
 ###############################################
